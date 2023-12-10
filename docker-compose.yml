@@ -239,6 +239,7 @@ services:
     depends_on:
      - eureka-server
      - velorentDb
+     - user-service
     restart: always
     ports:
       - "8090:8090"
@@ -254,6 +255,7 @@ services:
       - spring.jpa.hibernate.ddl-auto=update
       - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
       - spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+      - USER__URL__MICROSERVICE=http://user-service:8098
 
 
 

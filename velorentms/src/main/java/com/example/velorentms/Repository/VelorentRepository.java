@@ -12,7 +12,7 @@ import java.util.List;
 public interface VelorentRepository extends JpaRepository<Velorent, Long>, JpaSpecificationExecutor<Velorent> {
     List<Velorent> findByStartRentDate(Date startRentDate);
 
-    List<Velorent> findByUserId(Long userId);
+    List<Velorent> findByUserId(String userId);
 
 
 }

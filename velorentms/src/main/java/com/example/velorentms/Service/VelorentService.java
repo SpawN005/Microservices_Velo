@@ -2,6 +2,7 @@ package com.example.velorentms.Service;
 
 import com.example.velorentms.Entity.Velorent;
 import com.example.velorentms.Repository.VelorentRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,8 +43,11 @@ public class VelorentService {
     public void cancelVelorent(Long idVelorent){
         velorentRepository.deleteById(idVelorent);
     }
-    public List<Velorent> getVelorentsByuserId(Long userId){
+    public List<Velorent> getVelorentsByuserId(String userId){
         return velorentRepository.findByUserId(userId);
     }
+    // UserDTO.java
+
+
 
 }

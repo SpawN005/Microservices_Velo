@@ -12,9 +12,11 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+
 public class Velorent implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -22,7 +24,7 @@ public class Velorent implements Serializable {
     private Long veloId;
 
     @Column(name = "user_id")
-    private Long userId;
+    private String userId;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "start_rent_date")
@@ -32,11 +34,11 @@ public class Velorent implements Serializable {
     @Column(name = "end_rent_date")
     private Date endRentDate;
 
-    @Column(name = "from")
-    private String from;
+    @Column(name = "from_location")
+    private String fromLocation;
 
-    @Column(name = "to")
-    private String to;
+    @Column(name = "to_location")
+    private String toLocation;
 
 
 }

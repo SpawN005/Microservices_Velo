@@ -5,6 +5,7 @@ import com.example.velorentms.Service.VelorentService;
 
 import com.example.velorentms.Entity.Velorent;
 import com.example.velorentms.Service.VelorentService;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
@@ -42,11 +43,11 @@ public class VelorentController {
         return velorentService.getAllVelorent();
     }
 
-    @GetMapping("/bystartdate}")
+    @GetMapping("/bystartdate")
     public List<Velorent> getVelorentsByStartDate(@RequestBody Date date) {
         return velorentService.getVelorentsByDate(date);
     }
-    @GetMapping("/byenddate}")
+    @GetMapping("/byenddate")
     public List<Velorent> getVelorentsByendDate(@RequestBody Date date) {
         return velorentService.getVelorentsByDate(date);
     }
@@ -61,10 +62,29 @@ public class VelorentController {
     }
 
     @GetMapping("/user/{userId}")
-    public List<Velorent> getVelorentsByuserId(@PathVariable("userId") Long userId){
+    public List<Velorent> getVelorentsByuserId(@PathVariable("userId") String userId){
 
-        Object user =  restTemplate.getForObject(environment.getProperty("USER__URL__MICROSERVICE")+"/user/"+userId, Object.class);
-        System.out.println(user);
+
+        String result = restTemplate.getForObject("http://user-service:8098/api/user/"+userId, String.class);
+
+
         return velorentService.getVelorentsByuserId(userId);
+    }
+    @GetMapping("/userInfo/{userId}")
+    public User getUserByveloRent(@PathVariable("userId") String userId){
+
+
+        User result = restTemplate.getForObject("http://user-service:8098/api/user/"+userId, User.class);
+
+
+        return result;
+    }
+    @Data
+    public static class User {
+        private String id ;
+        private String firstName ;
+        private String lastName ;
+        private String userName ;
+
     }
 }
