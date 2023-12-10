@@ -20,7 +20,7 @@ public class AssociationController {
     private AssociationService associationService;
 
     @GetMapping("/All")
-    @RolesAllowed("user")
+
     public List<Association> getAllAssociation(){
 
 
