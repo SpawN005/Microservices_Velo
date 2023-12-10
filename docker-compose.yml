@@ -187,7 +187,7 @@ services:
     container_name: maintenance-container
     image: maintenance-image
     ports:
-      - "4001:3000"
+      - "3000:3000"
     restart: always
     networks:
       - bored-network

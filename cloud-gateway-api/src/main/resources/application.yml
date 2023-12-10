@@ -5,7 +5,7 @@ logging:
     org.springframework.security: DEBUG
     org.springframework.security.oauth2: DEBUG
 server:
-  port: 8051
+  port: 8100
 
 eureka:
   client:
@@ -63,5 +63,5 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/gateway-realm
+          issuer-uri: http://localhost:8180/realms/gateway-realm
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs

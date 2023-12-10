@@ -244,7 +244,7 @@ router.put('/update/:id', function (req, res, next) {
 
 router.get('/:id', function (req, res, next) {
     console.log("route", req.params.id)
-    veloService.displayVideoById(req.params.id).then(data => res.json(data));
+    veloService.displayVeloById(req.params.id).then(data => res.json(data));
 
 });
 /**
